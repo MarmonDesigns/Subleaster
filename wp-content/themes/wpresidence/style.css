@@ -6817,8 +6817,9 @@ table tbody tr td {
     color: #fff;
     font-size: 16px;
     position: absolute;
-    top: 15px;
-    left: 45px;
+    top: 15px;top:65px;
+    /*left: 45px;*/
+	right:45px;
     width: 30px;
     height: 30px;
     cursor: pointer;
@@ -6838,8 +6839,9 @@ table tbody tr td {
     color: #fff;
     font-size: 14px;
     position: absolute;
-    top: 46px;
-    left: 45px;
+    top: 46px;top:96px;
+    /*left: 45px;*/
+	right:45px;
     width: 30px;
     height: 30px;
     cursor: pointer;
@@ -12596,3 +12598,4 @@ span.wpcf7-form-control-wrap {
 
 div#adv-search-header-mobile {margin-top:-60px;}
 body.page-id-5265 div#adv-search-header-mobile {margin-top:0;}
+
