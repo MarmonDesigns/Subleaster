@@ -61,9 +61,50 @@ global $property_county_state;
             }
             ?>
         </div>
+		
+		
+		<p class="half_form  half_form_last" style="margin-bottom: 16px;">
+        <label for="property_county"><?php _e('State','wpestate');?></label>
+        <?php  
+        if($enable_autocomplete_status=='no'){
+            $selected_county_id=-1;
+     
+         /*  if($property_county_state!=''){
+                $term_county = get_term_by( 'name', $property_county_state, 'property_county_state');
+                $selected_county_id = $term_county->term_id;
+            }
+           */     
+            $select_state='';
+            $taxonomy = 'property_county_state';
+            $tax_terms = get_terms($taxonomy,$args);
+            
+          
+            $args=array(
+                'class'       => 'select-submit2',
+                'hide_empty'  => false,
+                'selected'    => $property_county_state,
+                'name'        => 'property_county',
+                'id'          => 'property_county',
+                'orderby'     => 'NAME',
+                'order'       => 'ASC',
+                'show_option_none'   => __('None','wpestate'),
+                'taxonomy'    => 'property_county_state',
+                'hierarchical'=> true,
+                'value_field' => 'name'
+              );
+              wp_dropdown_categories( $args );
+       
+        }else{
+        ?>
+            <input type="text" id="property_county" class="form-control"  size="40" name="property_county" value="<?php print $property_county;?>">
+        <?php
+        }
+        ?>
+        
+		</p>
 
 
-        <div class="advanced_area_div half_form half_form_last">
+        <!--<div class="advanced_area_div half_form half_form_last">
         <label for="property_area"><?php _e('Neighborhood','wpestate');?></label>
          
         <?php 
@@ -103,11 +144,8 @@ global $property_county_state;
         <?php } else{ ?>
             <input type="text" id="property_area" name="property_area" class="form-control" size="40" value="<?php print $property_area;?>">
         <?php } ?>
-        
-        <!--
-     
-        -->
-    </div> 
+       
+    </div> -->
 
 
     <p class="half_form">
@@ -120,55 +158,16 @@ global $property_county_state;
         <input type="text" id="property_state" class="form-control" size="40" name="property_state" value="<?php print $property_state;?>">
     </p>-->
     
-    <p class="half_form  half_form_last" style="margin-bottom: 16px;">
-        <label for="property_county"><?php _e('County / State','wpestate');?></label>
-        <?php  
-        if($enable_autocomplete_status=='no'){
-            $selected_county_id=-1;
-     
-         /*  if($property_county_state!=''){
-                $term_county = get_term_by( 'name', $property_county_state, 'property_county_state');
-                $selected_county_id = $term_county->term_id;
-            }
-           */     
-            $select_state='';
-            $taxonomy = 'property_county_state';
-            $tax_terms = get_terms($taxonomy,$args);
-            
-          
-            $args=array(
-                'class'       => 'select-submit2',
-                'hide_empty'  => false,
-                'selected'    => $property_county_state,
-                'name'        => 'property_county',
-                'id'          => 'property_county',
-                'orderby'     => 'NAME',
-                'order'       => 'ASC',
-                'show_option_none'   => __('None','wpestate'),
-                'taxonomy'    => 'property_county_state',
-                'hierarchical'=> true,
-                'value_field' => 'name'
-              );
-              wp_dropdown_categories( $args );
-       
-        }else{
-        ?>
-            <input type="text" id="property_county" class="form-control"  size="40" name="property_county" value="<?php print $property_county;?>">
-        <?php
-        }
-        ?>
-        
-     
-    </p>
     
     
     
     
     
-    <p class="half_form ">
+    
+    <!--<p class="half_form ">
         <label for="property_country"><?php _e('Country ','wpestate'); ?></label>
         <?php print wpestate_country_list($country_selected,'select-submit2'); ?>
-    </p>
+    </p>-->
 
     <p class="full_form" style="float:left;">
         <button id="google_capture"  class="wpb_button  wpb_btn-success wpb_btn-large vc_button"><?php _e('Place Pin with Sublease Address','wpestate');?></button>
